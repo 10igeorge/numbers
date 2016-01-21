@@ -10,25 +10,19 @@ var countTo = function(multiple, number) {
   return result.join(", ");
 };
 
-var errorMultiple = function(emptymultiple, number) {
-  return "error, please enter a multiple";
-};
-
-var errorNumber = function(multiple, emptynumber) {
-  return "error, please enter a number";
-};
-
-
 $(document).ready(function() {
  $("form#counter").submit(function(event){
-  //debugger;
+  // debugger;
    var userMultiple = parseInt($("#countBy").val());
    var userNumber = parseInt($("#upTo").val());
    var results = countTo(userMultiple, userNumber);
-   if (userMultiple === ""){
+   if (isNaN(userMultiple) || userMultiple.length == 0){
      alert("Please enter a multiple");
-   } else
+   } else if (isNaN(userNumber) || userNumber.length == 0){
+     alert("Please enter a number");
+   } else {
       $(".countUpTo").text(results);
+    }
   event.preventDefault();
  });
 });
