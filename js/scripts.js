@@ -25,19 +25,10 @@ $(document).ready(function() {
    var userMultiple = parseInt($("#countBy").val());
    var userNumber = parseInt($("#upTo").val());
    var results = countTo(userMultiple, userNumber);
-
-
-   $(".countUpTo").text(results).show();
-    event.preventDefault();
-
-   //
-  //  if (userInput === "") {
-  //    alert("Please enter a number");
-  //  } else if (userMultiple === "") {
-  //    alert("Please enter a multiple");
-  //  } else {
-  //    $(".countUpTo").text(userNumbers).show();
-  //  }
-  //  event.preventDefault();
+   if (userMultiple === ""){
+     alert("Please enter a multiple");
+   } else
+      $(".countUpTo").text(results);
+  event.preventDefault();
  });
 });
