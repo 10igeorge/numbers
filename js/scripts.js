@@ -1,27 +1,43 @@
 var countTo = function(multiple, number) {
   var current = 0;
   var result = [];
+
   while(current + multiple <= number){
     current += multiple;
     result.push(current);
   }
   console.log(result.join(", "));
+  return result.join(", ");
 };
 
-// var countBy = function(multiple) {
-//   for (var i=0; i<=number; i+= multiple) {
-//     return number;
-//   }
-// };
+var errorMultiple = function(emptymultiple, number) {
+  return "error, please enter a multiple";
+};
 
-// $(document).ready(function() {
-//  $("form#counter").submit(function(event){
-//    var userInput = ($('input#upto').val());
-//    var userMultiple = ($('input#countby').val());
-//
-//    $(".countUpTo").text(number);
-//
-//    $("#result").show();
-//    event.preventDefault();
-//  });
-// });
+var errorNumber = function(multiple, emptynumber) {
+  return "error, please enter a number";
+};
+
+
+$(document).ready(function() {
+ $("form#counter").submit(function(event){
+  //debugger;
+   var userMultiple = parseInt($("#countBy").val());
+   var userNumber = parseInt($("#upTo").val());
+   var results = countTo(userMultiple, userNumber);
+
+
+   $(".countUpTo").text(results).show();
+    event.preventDefault();
+
+   //
+  //  if (userInput === "") {
+  //    alert("Please enter a number");
+  //  } else if (userMultiple === "") {
+  //    alert("Please enter a multiple");
+  //  } else {
+  //    $(".countUpTo").text(userNumbers).show();
+  //  }
+  //  event.preventDefault();
+ });
+});
